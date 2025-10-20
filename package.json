@@ -1,0 +1,52 @@
+{
+  "name": "role-api-guard",
+  "version": "1.0.0",
+  "description": "Lightweight role-based API guard for Node.js (Express/Fastify)",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "prebuild": "npm run clean",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node -e \"require('fs').mkdirSync('dist/cjs', { recursive: true }); require('fs').writeFileSync('dist/cjs/package.json','{\\\"type\\\":\\\"commonjs\\\"}')\"",
+    "test": "npm run build && vitest run",
+    "example:express": "npm run build && tsx examples/express.ts",
+    "example:fastify": "npm run build && tsx examples/fastify.ts"
+  },
+  "author": "Hadi",
+  "license": "MIT",
+  "keywords": [
+    "auth",
+    "role",
+    "express",
+    "rbac",
+    "jwt",
+    "middleware"
+  ],
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^22.7.4",
+    "express": "^4.19.2",
+    "fastify": "^4.26.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.4.0",
+    "vitest": "^2.1.3"
+  },
+  "files": [
+    "dist"
+  ]
+}

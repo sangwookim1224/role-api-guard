@@ -1,0 +1,18 @@
+# dependencies
+node_modules
+dist
+coverage
+
+# build outputs
+*.log
+*.map
+*.tsbuildinfo
+
+# system files
+.DS_Store
+Thumbs.db
+
+# test / dev
+.env
+.env.local
+.env.*.local

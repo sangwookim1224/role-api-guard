@@ -1,7 +1,7 @@
 {
   "name": "role-api-guard",
   "version": "1.0.0",
-  "description": "Lightweight role-based API guard for Node.js (Express/Fastify)",
+  "description": "Role-based API authorization library for Node.js — supports JWT, session, and hierarchical roles.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
@@ -14,6 +14,7 @@
     }
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "prebuild": "npm run clean",
     "build": "npm run build:esm && npm run build:cjs",
@@ -28,10 +29,16 @@
   "keywords": [
     "auth",
     "role",
-    "express",
-    "rbac",
+    "guard",
+    "api",
+    "authorization",
+    "nodejs",
     "jwt",
-    "middleware"
+    "session",
+    "express",
+    "fastify",
+    "middleware",
+    "rbac"
   ],
   "dependencies": {
     "jsonwebtoken": "^9.0.0"
@@ -49,4 +56,13 @@
   "files": [
     "dist"
   ]
+  ,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sangwookim1224/role-api-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sangwookim1224/role-api-guard/issues"
+  },
+  "homepage": "https://github.com/sangwookim1224/role-api-guard#readme"
 }
